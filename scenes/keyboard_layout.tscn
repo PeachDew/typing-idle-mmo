@@ -1,0 +1,303 @@
+[gd_scene format=3 uid="uid://cnumsputqa74i"]
+
+[ext_resource type="Script" uid="uid://ojf0mh5w2h8r" path="res://scenes/keyboard_layout.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/key.tscn" id="2_3at80"]
+[ext_resource type="Script" uid="uid://dh2om55hhwtvj" path="res://scenes/key.gd" id="3_xxdna"]
+
+[node name="KeyboardLayout" type="Control" unique_id=218781954]
+custom_minimum_size = Vector2(529.95, 155.1)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1")
+key_spacing = 6.72
+rows = Array[PackedStringArray]([PackedStringArray("Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"), PackedStringArray("A", "S", "D", "F", "G", "H", "J", "K", "L"), PackedStringArray("Z", "X", "C", "V", "B", "N", "M")])
+
+[node name="KeyQ" type="Control" parent="." unique_id=3321689 instance=ExtResource("2_3at80")]
+custom_minimum_size = Vector2(48, 48)
+anchors_preset = 0
+offset_left = 305.76
+offset_top = 245.28
+offset_right = 305.76
+offset_bottom = 245.28
+script = ExtResource("3_xxdna")
+label = "Q"
+highlight_color = null
+
+[node name="KeyW" type="Control" parent="." unique_id=714301094 instance=ExtResource("2_3at80")]
+custom_minimum_size = Vector2(48, 48)
+anchors_preset = 0
+offset_left = 360.48
+offset_top = 245.28
+offset_right = 360.48
+offset_bottom = 245.28
+script = ExtResource("3_xxdna")
+label = "W"
+highlight_color = null
+
+[node name="KeyE" type="Control" parent="." unique_id=281710699 instance=ExtResource("2_3at80")]
+custom_minimum_size = Vector2(48, 48)
+anchors_preset = 0
+offset_left = 415.2
+offset_top = 245.28
+offset_right = 415.2
+offset_bottom = 245.28
+script = ExtResource("3_xxdna")
+label = "E"
+highlight_color = null
+
+[node name="KeyR" type="Control" parent="." unique_id=911538715 instance=ExtResource("2_3at80")]
+custom_minimum_size = Vector2(48, 48)
+anchors_preset = 0
+offset_left = 469.92
+offset_top = 245.28
+offset_right = 469.92
+offset_bottom = 245.28
+script = ExtResource("3_xxdna")
+label = "R"
+highlight_color = null
+
+[node name="KeyT" type="Control" parent="." unique_id=1963895138 instance=ExtResource("2_3at80")]
+custom_minimum_size = Vector2(48, 48)
+anchors_preset = 0
+offset_left = 524.64
+offset_top = 245.28
+offset_right = 524.64
+offset_bottom = 245.28
+script = ExtResource("3_xxdna")
+label = "T"
+highlight_color = null
+
+[node name="KeyY" type="Control" parent="." unique_id=1654568894 instance=ExtResource("2_3at80")]
+custom_minimum_size = Vector2(48, 48)
+anchors_preset = 0
+offset_left = 579.36
+offset_top = 245.28
+offset_right = 579.36
+offset_bottom = 245.28
+script = ExtResource("3_xxdna")
+label = "Y"
+highlight_color = null
+
+[node name="KeyU" type="Control" parent="." unique_id=2086241359 instance=ExtResource("2_3at80")]
+custom_minimum_size = Vector2(48, 48)
+anchors_preset = 0
+offset_left = 634.08
+offset_top = 245.28
+offset_right = 634.08
+offset_bottom = 245.28
+script = ExtResource("3_xxdna")
+label = "U"
+highlight_color = null
+
+[node name="KeyI" type="Control" parent="." unique_id=1281513302 instance=ExtResource("2_3at80")]
+custom_minimum_size = Vector2(48, 48)
+anchors_preset = 0
+offset_left = 688.8
+offset_top = 245.28
+offset_right = 688.8
+offset_bottom = 245.28
+script = ExtResource("3_xxdna")
+label = "I"
+highlight_color = null
+
+[node name="KeyO" type="Control" parent="." unique_id=1869807969 instance=ExtResource("2_3at80")]
+custom_minimum_size = Vector2(48, 48)
+anchors_preset = 0
+offset_left = 743.52
+offset_top = 245.28
+offset_right = 743.52
+offset_bottom = 245.28
+script = ExtResource("3_xxdna")
+label = "O"
+highlight_color = null
+
+[node name="KeyP" type="Control" parent="." unique_id=2131361126 instance=ExtResource("2_3at80")]
+custom_minimum_size = Vector2(48, 48)
+anchors_preset = 0
+offset_left = 798.24
+offset_top = 245.28
+offset_right = 798.24
+offset_bottom = 245.28
+script = ExtResource("3_xxdna")
+label = "P"
+highlight_color = null
+
+[node name="KeyA" type="Control" parent="." unique_id=1945148381 instance=ExtResource("2_3at80")]
+custom_minimum_size = Vector2(48, 48)
+anchors_preset = 0
+offset_left = 321.76
+offset_top = 300.0
+offset_right = 321.76
+offset_bottom = 300.0
+script = ExtResource("3_xxdna")
+label = "A"
+highlight_color = null
+
+[node name="KeyS" type="Control" parent="." unique_id=120288972 instance=ExtResource("2_3at80")]
+custom_minimum_size = Vector2(48, 48)
+anchors_preset = 0
+offset_left = 376.48
+offset_top = 300.0
+offset_right = 376.48
+offset_bottom = 300.0
+script = ExtResource("3_xxdna")
+label = "S"
+highlight_color = null
+
+[node name="KeyD" type="Control" parent="." unique_id=892199294 instance=ExtResource("2_3at80")]
+custom_minimum_size = Vector2(48, 48)
+anchors_preset = 0
+offset_left = 431.2
+offset_top = 300.0
+offset_right = 431.2
+offset_bottom = 300.0
+script = ExtResource("3_xxdna")
+label = "D"
+highlight_color = null
+
+[node name="KeyF" type="Control" parent="." unique_id=1924255525 instance=ExtResource("2_3at80")]
+custom_minimum_size = Vector2(48, 48)
+anchors_preset = 0
+offset_left = 485.92
+offset_top = 300.0
+offset_right = 485.92
+offset_bottom = 300.0
+script = ExtResource("3_xxdna")
+label = "F"
+highlight_color = null
+
+[node name="KeyG" type="Control" parent="." unique_id=672090016 instance=ExtResource("2_3at80")]
+custom_minimum_size = Vector2(48, 48)
+anchors_preset = 0
+offset_left = 540.64
+offset_top = 300.0
+offset_right = 540.64
+offset_bottom = 300.0
+script = ExtResource("3_xxdna")
+label = "G"
+highlight_color = null
+
+[node name="KeyH" type="Control" parent="." unique_id=242984558 instance=ExtResource("2_3at80")]
+custom_minimum_size = Vector2(48, 48)
+anchors_preset = 0
+offset_left = 595.36
+offset_top = 300.0
+offset_right = 595.36
+offset_bottom = 300.0
+script = ExtResource("3_xxdna")
+label = "H"
+highlight_color = null
+
+[node name="KeyJ" type="Control" parent="." unique_id=853883787 instance=ExtResource("2_3at80")]
+custom_minimum_size = Vector2(48, 48)
+anchors_preset = 0
+offset_left = 650.08
+offset_top = 300.0
+offset_right = 650.08
+offset_bottom = 300.0
+script = ExtResource("3_xxdna")
+label = "J"
+highlight_color = null
+
+[node name="KeyK" type="Control" parent="." unique_id=17498715 instance=ExtResource("2_3at80")]
+custom_minimum_size = Vector2(48, 48)
+anchors_preset = 0
+offset_left = 704.8
+offset_top = 300.0
+offset_right = 704.8
+offset_bottom = 300.0
+script = ExtResource("3_xxdna")
+label = "K"
+highlight_color = null
+
+[node name="KeyL" type="Control" parent="." unique_id=499440248 instance=ExtResource("2_3at80")]
+custom_minimum_size = Vector2(48, 48)
+anchors_preset = 0
+offset_left = 759.52
+offset_top = 300.0
+offset_right = 759.52
+offset_bottom = 300.0
+script = ExtResource("3_xxdna")
+label = "L"
+highlight_color = null
+
+[node name="KeyZ" type="Control" parent="." unique_id=948796403 instance=ExtResource("2_3at80")]
+custom_minimum_size = Vector2(48, 48)
+anchors_preset = 0
+offset_left = 337.76
+offset_top = 354.72
+offset_right = 337.76
+offset_bottom = 354.72
+script = ExtResource("3_xxdna")
+label = "Z"
+highlight_color = null
+
+[node name="KeyX" type="Control" parent="." unique_id=1235562380 instance=ExtResource("2_3at80")]
+custom_minimum_size = Vector2(48, 48)
+anchors_preset = 0
+offset_left = 392.48
+offset_top = 354.72
+offset_right = 392.48
+offset_bottom = 354.72
+script = ExtResource("3_xxdna")
+label = "X"
+highlight_color = null
+
+[node name="KeyC" type="Control" parent="." unique_id=1508185149 instance=ExtResource("2_3at80")]
+custom_minimum_size = Vector2(48, 48)
+anchors_preset = 0
+offset_left = 447.2
+offset_top = 354.72
+offset_right = 447.2
+offset_bottom = 354.72
+script = ExtResource("3_xxdna")
+label = "C"
+highlight_color = null
+
+[node name="KeyV" type="Control" parent="." unique_id=1145175270 instance=ExtResource("2_3at80")]
+custom_minimum_size = Vector2(48, 48)
+anchors_preset = 0
+offset_left = 501.92
+offset_top = 354.72
+offset_right = 501.92
+offset_bottom = 354.72
+script = ExtResource("3_xxdna")
+label = "V"
+highlight_color = null
+
+[node name="KeyB" type="Control" parent="." unique_id=321272850 instance=ExtResource("2_3at80")]
+custom_minimum_size = Vector2(48, 48)
+anchors_preset = 0
+offset_left = 556.64
+offset_top = 354.72
+offset_right = 556.64
+offset_bottom = 354.72
+script = ExtResource("3_xxdna")
+label = "B"
+highlight_color = null
+
+[node name="KeyN" type="Control" parent="." unique_id=187612640 instance=ExtResource("2_3at80")]
+custom_minimum_size = Vector2(48, 48)
+anchors_preset = 0
+offset_left = 611.36
+offset_top = 354.72
+offset_right = 611.36
+offset_bottom = 354.72
+script = ExtResource("3_xxdna")
+label = "N"
+highlight_color = null
+
+[node name="KeyM" type="Control" parent="." unique_id=1775269265 instance=ExtResource("2_3at80")]
+custom_minimum_size = Vector2(48, 48)
+anchors_preset = 0
+offset_left = 666.08
+offset_top = 354.72
+offset_right = 666.08
+offset_bottom = 354.72
+script = ExtResource("3_xxdna")
+label = "M"
+highlight_color = null
