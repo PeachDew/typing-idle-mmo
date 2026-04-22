@@ -2,8 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cnumsputqa74i" path="res://scenes/keyboard_layout.tscn" id="1"]
 [ext_resource type="Script" uid="uid://bdiyfimhonnv7" path="res://scenes/main.gd" id="2"]
-[ext_resource type="PackedScene" path="res://scenes/key.tscn" id="3_jyhfs"]
-[ext_resource type="Script" uid="uid://dh2om55hhwtvj" path="res://scenes/key.gd" id="4_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://cl6n77q1dn50" path="res://scenes/pause_menu.tscn" id="3"]
 
 [node name="Main" type="Control" unique_id=740537697]
 layout_mode = 3
@@ -14,271 +13,26 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2")
 
-[node name="Counter" type="Label" parent="." unique_id=592831194]
-layout_mode = 0
-offset_left = 16.0
-offset_top = 16.0
-text = "0"
-
 [node name="KeyboardLayout" parent="." unique_id=1705806611 instance=ExtResource("1")]
 layout_mode = 1
 
-[node name="KeyQ" type="Control" parent="KeyboardLayout" unique_id=1683236752 instance=ExtResource("3_jyhfs")]
-custom_minimum_size = Vector2(48, 48)
-anchors_preset = 0
-offset_left = 305.76
-offset_top = 245.28
-offset_right = 305.76
-offset_bottom = 245.28
-script = ExtResource("4_tbgi4")
-label = "Q"
+[node name="PauseMenu" parent="." unique_id=14973809 instance=ExtResource("3")]
+visible = false
+layout_mode = 1
 
-[node name="KeyW" type="Control" parent="KeyboardLayout" unique_id=1162983721 instance=ExtResource("3_jyhfs")]
-custom_minimum_size = Vector2(48, 48)
-anchors_preset = 0
-offset_left = 360.48
-offset_top = 245.28
-offset_right = 360.48
-offset_bottom = 245.28
-script = ExtResource("4_tbgi4")
-label = "W"
-
-[node name="KeyE" type="Control" parent="KeyboardLayout" unique_id=785233660 instance=ExtResource("3_jyhfs")]
-custom_minimum_size = Vector2(48, 48)
-anchors_preset = 0
-offset_left = 415.2
-offset_top = 245.28
-offset_right = 415.2
-offset_bottom = 245.28
-script = ExtResource("4_tbgi4")
-label = "E"
-
-[node name="KeyR" type="Control" parent="KeyboardLayout" unique_id=204119907 instance=ExtResource("3_jyhfs")]
-custom_minimum_size = Vector2(48, 48)
-anchors_preset = 0
-offset_left = 469.92
-offset_top = 245.28
-offset_right = 469.92
-offset_bottom = 245.28
-script = ExtResource("4_tbgi4")
-label = "R"
-
-[node name="KeyT" type="Control" parent="KeyboardLayout" unique_id=394901937 instance=ExtResource("3_jyhfs")]
-custom_minimum_size = Vector2(48, 48)
-anchors_preset = 0
-offset_left = 524.64
-offset_top = 245.28
-offset_right = 524.64
-offset_bottom = 245.28
-script = ExtResource("4_tbgi4")
-label = "T"
-
-[node name="KeyY" type="Control" parent="KeyboardLayout" unique_id=1503784226 instance=ExtResource("3_jyhfs")]
-custom_minimum_size = Vector2(48, 48)
-anchors_preset = 0
-offset_left = 579.36
-offset_top = 245.28
-offset_right = 579.36
-offset_bottom = 245.28
-script = ExtResource("4_tbgi4")
-label = "Y"
-
-[node name="KeyU" type="Control" parent="KeyboardLayout" unique_id=524029627 instance=ExtResource("3_jyhfs")]
-custom_minimum_size = Vector2(48, 48)
-anchors_preset = 0
-offset_left = 634.08
-offset_top = 245.28
-offset_right = 634.08
-offset_bottom = 245.28
-script = ExtResource("4_tbgi4")
-label = "U"
-
-[node name="KeyI" type="Control" parent="KeyboardLayout" unique_id=1492539292 instance=ExtResource("3_jyhfs")]
-custom_minimum_size = Vector2(48, 48)
-anchors_preset = 0
-offset_left = 688.8
-offset_top = 245.28
-offset_right = 688.8
-offset_bottom = 245.28
-script = ExtResource("4_tbgi4")
-label = "I"
-
-[node name="KeyO" type="Control" parent="KeyboardLayout" unique_id=202732084 instance=ExtResource("3_jyhfs")]
-custom_minimum_size = Vector2(48, 48)
-anchors_preset = 0
-offset_left = 743.52
-offset_top = 245.28
-offset_right = 743.52
-offset_bottom = 245.28
-script = ExtResource("4_tbgi4")
-label = "O"
-
-[node name="KeyP" type="Control" parent="KeyboardLayout" unique_id=1713137210 instance=ExtResource("3_jyhfs")]
-custom_minimum_size = Vector2(48, 48)
-anchors_preset = 0
-offset_left = 798.24
-offset_top = 245.28
-offset_right = 798.24
-offset_bottom = 245.28
-script = ExtResource("4_tbgi4")
-label = "P"
-
-[node name="KeyA" type="Control" parent="KeyboardLayout" unique_id=302668654 instance=ExtResource("3_jyhfs")]
-custom_minimum_size = Vector2(48, 48)
-anchors_preset = 0
-offset_left = 321.76
-offset_top = 300.0
-offset_right = 321.76
-offset_bottom = 300.0
-script = ExtResource("4_tbgi4")
-label = "A"
-
-[node name="KeyS" type="Control" parent="KeyboardLayout" unique_id=214150491 instance=ExtResource("3_jyhfs")]
-custom_minimum_size = Vector2(48, 48)
-anchors_preset = 0
-offset_left = 376.48
-offset_top = 300.0
-offset_right = 376.48
-offset_bottom = 300.0
-script = ExtResource("4_tbgi4")
-label = "S"
-
-[node name="KeyD" type="Control" parent="KeyboardLayout" unique_id=10975638 instance=ExtResource("3_jyhfs")]
-custom_minimum_size = Vector2(48, 48)
-anchors_preset = 0
-offset_left = 431.2
-offset_top = 300.0
-offset_right = 431.2
-offset_bottom = 300.0
-script = ExtResource("4_tbgi4")
-label = "D"
-
-[node name="KeyF" type="Control" parent="KeyboardLayout" unique_id=344002117 instance=ExtResource("3_jyhfs")]
-custom_minimum_size = Vector2(48, 48)
-anchors_preset = 0
-offset_left = 485.92
-offset_top = 300.0
-offset_right = 485.92
-offset_bottom = 300.0
-script = ExtResource("4_tbgi4")
-label = "F"
-
-[node name="KeyG" type="Control" parent="KeyboardLayout" unique_id=286409852 instance=ExtResource("3_jyhfs")]
-custom_minimum_size = Vector2(48, 48)
-anchors_preset = 0
-offset_left = 540.64
-offset_top = 300.0
-offset_right = 540.64
-offset_bottom = 300.0
-script = ExtResource("4_tbgi4")
-label = "G"
-
-[node name="KeyH" type="Control" parent="KeyboardLayout" unique_id=330045626 instance=ExtResource("3_jyhfs")]
-custom_minimum_size = Vector2(48, 48)
-anchors_preset = 0
-offset_left = 595.36
-offset_top = 300.0
-offset_right = 595.36
-offset_bottom = 300.0
-script = ExtResource("4_tbgi4")
-label = "H"
-
-[node name="KeyJ" type="Control" parent="KeyboardLayout" unique_id=1026862302 instance=ExtResource("3_jyhfs")]
-custom_minimum_size = Vector2(48, 48)
-anchors_preset = 0
-offset_left = 650.08
-offset_top = 300.0
-offset_right = 650.08
-offset_bottom = 300.0
-script = ExtResource("4_tbgi4")
-label = "J"
-
-[node name="KeyK" type="Control" parent="KeyboardLayout" unique_id=1516245923 instance=ExtResource("3_jyhfs")]
-custom_minimum_size = Vector2(48, 48)
-anchors_preset = 0
-offset_left = 704.8
-offset_top = 300.0
-offset_right = 704.8
-offset_bottom = 300.0
-script = ExtResource("4_tbgi4")
-label = "K"
-
-[node name="KeyL" type="Control" parent="KeyboardLayout" unique_id=228380335 instance=ExtResource("3_jyhfs")]
-custom_minimum_size = Vector2(48, 48)
-anchors_preset = 0
-offset_left = 759.52
-offset_top = 300.0
-offset_right = 759.52
-offset_bottom = 300.0
-script = ExtResource("4_tbgi4")
-label = "L"
-
-[node name="KeyZ" type="Control" parent="KeyboardLayout" unique_id=1118673275 instance=ExtResource("3_jyhfs")]
-custom_minimum_size = Vector2(48, 48)
-anchors_preset = 0
-offset_left = 337.76
-offset_top = 354.72
-offset_right = 337.76
-offset_bottom = 354.72
-script = ExtResource("4_tbgi4")
-label = "Z"
-
-[node name="KeyX" type="Control" parent="KeyboardLayout" unique_id=1524993428 instance=ExtResource("3_jyhfs")]
-custom_minimum_size = Vector2(48, 48)
-anchors_preset = 0
-offset_left = 392.48
-offset_top = 354.72
-offset_right = 392.48
-offset_bottom = 354.72
-script = ExtResource("4_tbgi4")
-label = "X"
-
-[node name="KeyC" type="Control" parent="KeyboardLayout" unique_id=1855024872 instance=ExtResource("3_jyhfs")]
-custom_minimum_size = Vector2(48, 48)
-anchors_preset = 0
-offset_left = 447.2
-offset_top = 354.72
-offset_right = 447.2
-offset_bottom = 354.72
-script = ExtResource("4_tbgi4")
-label = "C"
-
-[node name="KeyV" type="Control" parent="KeyboardLayout" unique_id=1964034845 instance=ExtResource("3_jyhfs")]
-custom_minimum_size = Vector2(48, 48)
-anchors_preset = 0
-offset_left = 501.92
-offset_top = 354.72
-offset_right = 501.92
-offset_bottom = 354.72
-script = ExtResource("4_tbgi4")
-label = "V"
-
-[node name="KeyB" type="Control" parent="KeyboardLayout" unique_id=82194964 instance=ExtResource("3_jyhfs")]
-custom_minimum_size = Vector2(48, 48)
-anchors_preset = 0
-offset_left = 556.64
-offset_top = 354.72
-offset_right = 556.64
-offset_bottom = 354.72
-script = ExtResource("4_tbgi4")
-label = "B"
-
-[node name="KeyN" type="Control" parent="KeyboardLayout" unique_id=905768184 instance=ExtResource("3_jyhfs")]
-custom_minimum_size = Vector2(48, 48)
-anchors_preset = 0
-offset_left = 611.36
-offset_top = 354.72
-offset_right = 611.36
-offset_bottom = 354.72
-script = ExtResource("4_tbgi4")
-label = "N"
-
-[node name="KeyM" type="Control" parent="KeyboardLayout" unique_id=1215123726 instance=ExtResource("3_jyhfs")]
-custom_minimum_size = Vector2(48, 48)
-anchors_preset = 0
-offset_left = 666.08
-offset_top = 354.72
-offset_right = 666.08
-offset_bottom = 354.72
-script = ExtResource("4_tbgi4")
-label = "M"
+[node name="Counter" type="Label" parent="." unique_id=592831194]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -28.0
+offset_top = -37.0
+offset_right = -18.0
+offset_bottom = -14.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1

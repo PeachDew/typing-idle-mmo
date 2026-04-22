@@ -38,32 +38,55 @@ extends Control
 		font_size = v
 		queue_redraw()
 
+@export_group("Fade Timings")
+@export var fade_in_duration := 0.05
+@export var fade_to_dim_duration := 0.3
+@export var fade_out_duration := 0.4
 
-var pressed := false:
+@export var glow_intensity_held := 0.4
+
+## Current glow intensity: 0.0 = off, 1.0 = full highlight.
+var glow := 0.0:
 	set(v):
-		pressed = v
-		_on_pressed_changed()
+		glow = v
+		queue_redraw()
 
-func press():
-	pressed = true
+var _held := false
+var _tween: Tween = null
 
-func release():
-	pressed = false
+
+func press() -> void:
+	_held = true
+	_kill_tween()
+	_tween = create_tween()
+	_tween.tween_property(self, "glow", 1.0, fade_in_duration)
+	_tween.tween_property(self, "glow", glow_intensity_held, fade_to_dim_duration)
+
+
+func release() -> void:
+	_held = false
+	_kill_tween()
+	_tween = create_tween()
+	_tween.tween_property(self, "glow", 0.0, fade_out_duration)
+
 
 func _ready() -> void:
 	custom_minimum_size = key_size
 	queue_redraw()
 
 
-## Called whenever [member pressed] changes. Override or extend for additional effects.
-func _on_pressed_changed() -> void:
-	queue_redraw()
+func _kill_tween() -> void:
+	if _tween:
+		_tween.kill()
+		_tween = null
 
 
 func _draw() -> void:
 	draw_rect(Rect2(Vector2.ZERO, key_size), bg_color)
-	var current_border := highlight_color if pressed else border_color
-	draw_rect(Rect2(Vector2.ZERO, key_size), current_border, false, 2.0 if pressed else 1.0)
+
+	var border := border_color.lerp(highlight_color, glow)
+	var border_width := 1.0 + glow * 2.0
+	draw_rect(Rect2(Vector2.ZERO, key_size), border, false, border_width)
 
 	if label.is_empty():
 		return

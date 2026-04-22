@@ -52,6 +52,7 @@ const KeyScene := preload("res://scenes/key.tscn")
 
 
 func _ready() -> void:
+	resized.connect(_rebuild)
 	_rebuild()
 
 
@@ -68,7 +69,7 @@ func _input(event: InputEvent) -> void:
 			if key_event.pressed:
 				key_node.press()
 				key_pressed.emit(ch)
-			else:
+			elif not key_event.pressed:
 				key_node.release()
 
 
@@ -103,8 +104,8 @@ func _rebuild() -> void:
 			key_node.text_color = text_color
 			key_node.position = Vector2(x, row_y)
 			add_child(key_node)
-			if Engine.is_editor_hint():
-				key_node.set_owner(get_tree().edited_scene_root)
+			# NOTE: intentionally NOT setting owner — these nodes are
+			# ephemeral and should never be serialized into .tscn files.
 
 			x += key_size.x + key_spacing
 

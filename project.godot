@@ -15,6 +15,11 @@ run/main_scene="res://scenes/main.tscn"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+UpgradeManager="*uid://d0ue006qrugvi"
+AuraManager="*uid://dx3eaxka0noeb"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
