@@ -15,5 +15,5 @@ func _ready() -> void:
 	idle_timer.start()
 
 func _on_idle_tick() -> void:
-	AuraManager.aura += UpgradeManager.upgrades[1].level - 1
+	AuraManager.aura += UpgradeManager.get_level("basic_keypress_boost")
 	aura_changed.emit()

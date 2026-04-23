@@ -2,7 +2,7 @@
 extends Panel
 ## Semi-transparent pause menu overlay. Toggle visibility via Escape.
 
-signal upgrade_purchase_attempt(index: int)
+signal upgrade_purchase_attempt(index: String)
 
 @export var border_margin := 40.0:
 	set(v):
@@ -30,12 +30,14 @@ var feedback_text := "":
 
 var _feedback_timer := 0.0
 
+
 func on_upgrade_manager_purchase_complete(purchase_success: bool):
 	if purchase_success:
 		show_feedback("Purchased")
 		refresh_costs()
 	else:
 		show_feedback("Not Enough Points")
+
 
 func _ready() -> void:
 	_update_anchors()
@@ -78,7 +80,8 @@ func _input(event: InputEvent) -> void:
 			accept_event()
 			return
 		if event.keycode in [KEY_ENTER, KEY_KP_ENTER, KEY_SPACE]:
-			upgrade_purchase_attempt.emit(selected_index)
+			var upgrade_id: String = UpgradeManager.get_all_ids()[selected_index]
+			upgrade_purchase_attempt.emit(upgrade_id)
 			accept_event()
 
 
@@ -103,12 +106,12 @@ func _refresh_from_manager() -> void:
 		return
 	var labels := _get_desc_labels()
 	var cost_labels := _get_cost_labels()
-	var upgrades := UpgradeManager.upgrades
-	for i in upgrades.size():
+	for i in UpgradeManager.get_all_ids().size():
+		var upgrade_id: String = UpgradeManager.get_all_ids()[i]
 		if i < labels.size():
-			labels[i].text = upgrades[i].name
+			labels[i].text = UpgradeManager.get_upgrade_name(upgrade_id)
 		if i < cost_labels.size():
-			cost_labels[i].text = str(upgrades[i].get_cost()) + " pts"
+			cost_labels[i].text = str(UpgradeManager.get_cost(upgrade_id)) + " pts"
 
 
 func _update_anchors() -> void:

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="UpgradeDefinition" format=3 uid="uid://yv0pa8wna1e4"]
+
+[ext_resource type="Script" uid="uid://7e8kswhl6fyt" path="res://resources/upgrade_definition.gd" id="1_n1f8p"]
+
+[resource]
+script = ExtResource("1_n1f8p")
+id = "basic_keypress_boost"
+name = "Aura Pulse"
+base_cost = 2
+metadata/_custom_type_script = "uid://7e8kswhl6fyt"

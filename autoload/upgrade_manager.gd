@@ -1,37 +1,58 @@
 extends Node
 
-class Upgrade:
-	var name: String
-	var base_cost: int
-	var level: int = 1
-	var cost_multiplier: float = 1.5
-	var effect_ids: PackedStringArray
+var upgrade_data: Dictionary[String, UpgradeDefinition] = {}
+var upgrade_levels: Dictionary[String, int] = {}
 
-	func _init(p_name: String, p_base_cost: int, p_effect_ids: PackedStringArray) -> void:
-		name = p_name
-		base_cost = p_base_cost
-		effect_ids = p_effect_ids
-
-	func get_cost() -> int:
-		return int(base_cost * pow(cost_multiplier, level))
-
-var upgrades: Array[Upgrade] = []
 signal purchase_completed(success: bool)
 
-func on_upgrade_purchase_attempt(index: int) -> bool:
+
+func on_upgrade_purchase_attempt(id: String) -> bool:
 	# connected in pause_menu.gd
-	var upgrade: Upgrade = upgrades[index]
-	if AuraManager.aura >= upgrade.get_cost():
-		AuraManager.aura -= upgrade.get_cost()
+	var upgrade_cost: int = get_cost(id)
+	if AuraManager.aura >= upgrade_cost:
+		AuraManager.aura -= upgrade_cost
 		AuraManager.aura_changed.emit()
-		upgrade.level += 1
+		upgrade_levels[id] += 1
 		purchase_completed.emit(true)
 		return true
 	purchase_completed.emit(false)
 	return false
 
+
+func _load_upgrade_resources(path: String = "res://resources/"):
+	var dir = DirAccess.open(path)
+	if dir:
+		dir.list_dir_begin()
+		var file_name = dir.get_next()
+		while file_name != "":
+			if file_name == "." or file_name == "..":
+				continue
+			if file_name.ends_with(".tres"):
+				var res: Resource = load(path + file_name)
+				if not res is UpgradeDefinition:
+					continue
+				var def: UpgradeDefinition = res
+				upgrade_data[def.id] = def
+				upgrade_levels[def.id] = 0
+			file_name = dir.get_next()
+
+
+func get_level(id: String) -> int:
+	return upgrade_levels[id]
+
+
+func get_upgrade_name(id: String) -> String:
+	return upgrade_data[id].name
+
+
+func get_cost(id: String) -> int:
+	var upgrade: UpgradeDefinition = upgrade_data[id]
+	return int(upgrade.base_cost * pow(upgrade.cost_multiplier, upgrade_levels[id]))
+
+
+func get_all_ids() -> Array:
+	return upgrade_data.keys()
+
+
 func _ready() -> void:
-	upgrades = [
-		Upgrade.new("Speed Typing", 5, PackedStringArray(["up_base_points"])),
-		Upgrade.new("Aura Mind", 10, PackedStringArray(["up_points_p_sec"])),
-	]
+	_load_upgrade_resources()
