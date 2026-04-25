@@ -32,6 +32,7 @@ func _load_upgrade_resources(path: String = "res://resources/"):
 				if not res is UpgradeDefinition:
 					continue
 				var def: UpgradeDefinition = res
+				print(file_name)
 				upgrade_data[def.id] = def
 				upgrade_levels[def.id] = 0
 			file_name = dir.get_next()

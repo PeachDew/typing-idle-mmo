@@ -2,29 +2,6 @@
 
 [ext_resource type="Script" uid="uid://ci3jm21dwceqs" path="res://scenes/pause_menu.gd" id="1"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n87rw"]
-content_margin_left = 8.0
-content_margin_top = 8.0
-content_margin_right = 8.0
-content_margin_bottom = 8.0
-bg_color = Color(0.2, 0.2, 0.25, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(1, 0.85, 0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_myx47"]
-content_margin_left = 8.0
-content_margin_top = 8.0
-content_margin_right = 8.0
-content_margin_bottom = 8.0
-bg_color = Color(0.2, 0.2, 0.25, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0.3, 0.3, 0.35, 1)
 
 [node name="PauseMenu" type="Panel" unique_id=750960716]
 anchors_preset = 15
@@ -37,7 +14,6 @@ offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1")
-descriptions = PackedStringArray("Upgrade A", "Upgrade B")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1369471195]
 layout_mode = 1
@@ -50,51 +26,6 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="Option1" type="PanelContainer" parent="HBoxContainer" unique_id=556012187]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_n87rw")
-
-[node name="VBox" type="VBoxContainer" parent="HBoxContainer/Option1" unique_id=454799514]
-layout_mode = 2
-alignment = 1
-
-[node name="Icon" type="ColorRect" parent="HBoxContainer/Option1/VBox" unique_id=17824217]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-color = Color(0.4, 0.4, 0.45, 1)
-
-[node name="Description" type="Label" parent="HBoxContainer/Option1/VBox" unique_id=1173784784]
-layout_mode = 2
-text = "Upgrade A"
-horizontal_alignment = 1
-
-[node name="Cost" type="Label" parent="HBoxContainer/Option1/VBox" unique_id=345534429]
-layout_mode = 2
-text = "5 pts"
-horizontal_alignment = 1
-
-[node name="Option2" type="PanelContainer" parent="HBoxContainer" unique_id=886493302]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_myx47")
-
-[node name="VBox" type="VBoxContainer" parent="HBoxContainer/Option2" unique_id=1341517634]
-layout_mode = 2
-alignment = 1
-
-[node name="Icon" type="ColorRect" parent="HBoxContainer/Option2/VBox" unique_id=349412498]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-color = Color(0.4, 0.4, 0.45, 1)
-
-[node name="Description" type="Label" parent="HBoxContainer/Option2/VBox" unique_id=1470905973]
-layout_mode = 2
-text = "Upgrade B"
-horizontal_alignment = 1
-
-[node name="Cost" type="Label" parent="HBoxContainer/Option2/VBox" unique_id=1644200241]
-layout_mode = 2
-text = "10 pts"
-horizontal_alignment = 1
 
 [node name="FeedbackLabel" type="Label" parent="." unique_id=2015157857]
 layout_mode = 1

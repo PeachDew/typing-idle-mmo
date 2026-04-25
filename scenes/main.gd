@@ -12,5 +12,4 @@ func on_aura_manager_aura_changed():
 	counter.text = str(AuraManager.aura)
 
 func _on_key_pressed(_label: String) -> void:
-	AuraManager.aura += 1 + UpgradeManager.get_level("basic_keypress_boost")
-	counter.text = str(AuraManager.aura)
+	AuraManager.increment_aura(1 + UpgradeManager.get_level("basic_keypress_boost"))

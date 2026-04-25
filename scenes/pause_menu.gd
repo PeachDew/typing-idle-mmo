@@ -41,8 +41,7 @@ func on_upgrade_manager_purchase_complete(purchase_success: bool):
 
 func _ready() -> void:
 	_update_anchors()
-	_update_placeholders()
-	_refresh_from_manager()
+	_rebuild_cards()
 	_update_selection()
 
 	UpgradeManager.purchase_completed.connect(on_upgrade_manager_purchase_complete)
@@ -106,8 +105,9 @@ func _refresh_from_manager() -> void:
 		return
 	var labels := _get_desc_labels()
 	var cost_labels := _get_cost_labels()
-	for i in UpgradeManager.get_all_ids().size():
-		var upgrade_id: String = UpgradeManager.get_all_ids()[i]
+	var upgrade_ids := UpgradeManager.get_all_ids()
+	for i in upgrade_ids.size():
+		var upgrade_id: String = upgrade_ids[i]
 		if i < labels.size():
 			labels[i].text = UpgradeManager.get_upgrade_name(upgrade_id)
 		if i < cost_labels.size():
@@ -145,14 +145,36 @@ func _option_count() -> int:
 	return $HBoxContainer.get_child_count()
 
 
-func _update_selection() -> void:
+func _rebuild_cards() -> void:
 	if not is_inside_tree():
 		return
-	var options := $HBoxContainer.get_children()
-	for i in options.size():
-		var opt := options[i] as PanelContainer
-		if not opt:
-			continue
+	for child in $HBoxContainer.get_children():
+		$HBoxContainer.remove_child(child)
+		child.free()
+	var upgrade_ids := UpgradeManager.get_all_ids()
+	for i in upgrade_ids.size():
+		var upgrade_id: String = upgrade_ids[i]
+		var card := PanelContainer.new()
+		card.name = "Card" + str(i)
+		var vbox := VBoxContainer.new()
+		vbox.name = "VBox"
+		vbox.alignment = BoxContainer.ALIGNMENT_CENTER
+		var icon := ColorRect.new()
+		icon.name = "Icon"
+		icon.custom_minimum_size = placeholder_size
+		icon.color = Color(0.4, 0.4, 0.45, 1)
+		var desc := Label.new()
+		desc.name = "Description"
+		desc.text = UpgradeManager.get_upgrade_name(upgrade_id)
+		desc.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		var cost := Label.new()
+		cost.name = "Cost"
+		cost.text = str(UpgradeManager.get_cost(upgrade_id)) + " pts"
+		cost.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		vbox.add_child(icon)
+		vbox.add_child(desc)
+		vbox.add_child(cost)
+		card.add_child(vbox)
 		var style := StyleBoxFlat.new()
 		style.content_margin_left = 8.0
 		style.content_margin_top = 8.0
@@ -163,8 +185,21 @@ func _update_selection() -> void:
 		style.border_width_top = 3
 		style.border_width_right = 3
 		style.border_width_bottom = 3
-		style.border_color = selected_color if i == selected_index else unselected_color
-		opt.add_theme_stylebox_override("panel", style)
+		style.border_color = unselected_color
+		card.add_theme_stylebox_override("panel", style)
+		$HBoxContainer.add_child(card)
+
+func _update_selection() -> void:
+	if not is_inside_tree():
+		return
+	var options := $HBoxContainer.get_children()
+	for i in options.size():
+		var opt := options[i] as PanelContainer
+		if not opt:
+			continue
+		var style := opt.get_theme_stylebox("panel") as StyleBoxFlat
+		if style:
+			style.border_color = selected_color if i == selected_index else unselected_color
 
 
 func _get_icons() -> Array[ColorRect]:
