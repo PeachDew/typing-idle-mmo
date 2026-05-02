@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="UpgradeDefinition" format=3 uid="uid://cfhufkujwhcli"]
+
+[ext_resource type="Script" uid="uid://7e8kswhl6fyt" path="res://resources/upgrade_definition.gd" id="1_jysoh"]
+
+[resource]
+script = ExtResource("1_jysoh")
+id = "basic_aura_tickspeed_reduce"
+name = "Aura Flow"
+base_cost = 25
+sort_order = 2
+metadata/_custom_type_script = "uid://7e8kswhl6fyt"

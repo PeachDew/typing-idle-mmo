@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://ci3jm21dwceqs" path="res://scenes/pause_menu.gd" id="1"]
 
-
 [node name="PauseMenu" type="Panel" unique_id=750960716]
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,7 +24,6 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
-
 
 [node name="FeedbackLabel" type="Label" parent="." unique_id=2015157857]
 layout_mode = 1

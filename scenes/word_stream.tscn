@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://byrgebo18lne5"]
+
+[ext_resource type="Script" uid="uid://bdb3tvw6qs2p8" path="res://scenes/word_stream.gd" id="1_6lrsy"]
+
+[node name="WordStream" type="Control" unique_id=1041227843]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6lrsy")
+
+[node name="Row1" type="RichTextLabel" parent="." unique_id=9649443]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+scroll_active = false
+autowrap_mode = 2
+vertical_alignment = 1

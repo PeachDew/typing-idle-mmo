@@ -2,8 +2,10 @@ extends Node
 
 var upgrade_data: Dictionary[String, UpgradeDefinition] = {}
 var upgrade_levels: Dictionary[String, int] = {}
+var sorted_upgrade_ids: Array[String] = []
 
-signal purchase_completed(success: bool)
+signal purchase_resolved(success: bool)
+signal upgrade_leveled(id: String, new_level: int)
 
 
 func on_upgrade_purchase_attempt(id: String) -> bool:
@@ -13,9 +15,10 @@ func on_upgrade_purchase_attempt(id: String) -> bool:
 		AuraManager.aura -= upgrade_cost
 		AuraManager.aura_changed.emit()
 		upgrade_levels[id] += 1
-		purchase_completed.emit(true)
+		purchase_resolved.emit(true)
+		upgrade_leveled.emit(id, upgrade_levels[id])
 		return true
-	purchase_completed.emit(false)
+	purchase_resolved.emit(false)
 	return false
 
 
@@ -51,8 +54,17 @@ func get_cost(id: String) -> int:
 	return int(upgrade.base_cost * pow(upgrade.cost_multiplier, upgrade_levels[id]))
 
 
-func get_all_ids() -> Array:
-	return upgrade_data.keys()
+func get_all_ids() -> Array[String]:
+	if sorted_upgrade_ids:
+		return sorted_upgrade_ids
+	var upgrade_ids: Array[String] = []
+	for id in upgrade_data:
+		upgrade_ids.append(id)
+	upgrade_ids.sort_custom(func(a: String, b: String) -> bool:
+		return upgrade_data[a].sort_order < upgrade_data[b].sort_order
+	)
+	sorted_upgrade_ids = upgrade_ids
+	return upgrade_ids
 
 
 func _ready() -> void:

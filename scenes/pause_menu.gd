@@ -1,4 +1,3 @@
-@tool
 extends Panel
 ## Semi-transparent pause menu overlay. Toggle visibility via Escape.
 
@@ -44,7 +43,7 @@ func _ready() -> void:
 	_rebuild_cards()
 	_update_selection()
 
-	UpgradeManager.purchase_completed.connect(on_upgrade_manager_purchase_complete)
+	UpgradeManager.purchase_resolved.connect(on_upgrade_manager_purchase_complete)
 	upgrade_purchase_attempt.connect(UpgradeManager.on_upgrade_purchase_attempt)
 
 
@@ -56,8 +55,6 @@ func _process(delta: float) -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if Engine.is_editor_hint():
-		return
 	if event is InputEventKey and event.keycode == KEY_ESCAPE and not event.echo:
 		if event.pressed:
 			_toggle()

@@ -5,3 +5,4 @@ extends Resource
 @export var name: String = "Upgrade Name"
 @export var base_cost: int = 0
 @export var cost_multiplier: float = 1.5
+@export var sort_order: int = 0

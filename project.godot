@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 UpgradeManager="*uid://d0ue006qrugvi"
 AuraManager="*uid://dx3eaxka0noeb"
+WordPool="*uid://dh1ea546sxsn8"
 
 [physics]
 

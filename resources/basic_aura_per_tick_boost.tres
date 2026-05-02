@@ -7,4 +7,5 @@ script = ExtResource("1_oh1sw")
 id = "basic_aura_per_tick_boost"
 name = "Aura Mind"
 base_cost = 10
+sort_order = 1
 metadata/_custom_type_script = "uid://7e8kswhl6fyt"
