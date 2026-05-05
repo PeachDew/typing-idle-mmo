@@ -5,6 +5,7 @@ extends Control
 var char_buff: CharBuffer
 
 signal character_typed(correct: bool)
+signal layout_toggled(new_layout: String)
 
 
 class CharBuffer:
@@ -47,9 +48,16 @@ func _input(event: InputEvent) -> void:
 	if key.echo or not key.pressed:
 		return
 
-	if key.unicode == 0:
+	# Handle Ctrl+Space to toggle layout
+	if key.keycode == KEY_SPACE and key.ctrl_pressed:
+		SettingsManager.toggle_layout()
+		layout_toggled.emit(SettingsManager.Layout.keys()[SettingsManager.current_layout].to_lower())
+		accept_event()
 		return
-	var ch := char(key.unicode)
+
+	var ch: String = SettingsManager.physical_to_char(key.physical_keycode)
+	if ch == "":
+		return
 
 	var expected: String = char_buff.current_char()
 	char_buff.advance()

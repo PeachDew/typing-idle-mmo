@@ -81,6 +81,8 @@ func _process(delta: float) -> void:
 
 
 func flash(correct: bool) -> void:
+	if not correct:
+		return
 	var slot := _next_slot
 	_next_slot = (_next_slot + 1) % PULSE_COUNT
 

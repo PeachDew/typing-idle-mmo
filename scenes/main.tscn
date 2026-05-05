@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bdiyfimhonnv7" path="res://scenes/main.gd" id="2"]
 [ext_resource type="PackedScene" uid="uid://cl6n77q1dn50" path="res://scenes/pause_menu.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://byrgebo18lne5" path="res://scenes/word_stream.tscn" id="4_jyhfs"]
-[ext_resource type="Script" path="res://scenes/background_flash.gd" id="5_bgfl"]
+[ext_resource type="Script" uid="uid://wvqynuc3ymh0" path="res://scenes/background_flash.gd" id="5_bgfl"]
 
 [node name="Main" type="Control" unique_id=740537697]
 layout_mode = 3

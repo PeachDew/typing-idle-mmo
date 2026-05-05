@@ -29,6 +29,6 @@ func _on_upgrade_changed(id: String, _level: int) -> void:
 		update_tickspeed()
 
 func update_tickspeed() -> void:
-	var level := UpgradeManager.get_level("basic_aura_tickspeed_reduce")
+	var level: int = UpgradeManager.get_level("basic_aura_tickspeed_reduce")
 	idle_timer.wait_time = base_tick_duration * pow(tick_decay_rate, level)
 	print(idle_timer.wait_time)

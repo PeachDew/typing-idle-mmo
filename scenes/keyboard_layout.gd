@@ -3,8 +3,16 @@ extends Control
 ## Visual keyboard layout — 3 rows of Key child nodes with configurable row offsets.
 
 signal key_pressed(label: String)
+signal layout_toggled(new_layout: String)
 
 const KeyScene := preload("res://scenes/key.tscn")
+
+# Physical QWERTY rows used for node naming (physical_keycode always gives QWERTY)
+var _PHYSICAL_ROWS: Array[PackedStringArray] = [
+	PackedStringArray(["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"]),
+	PackedStringArray(["A", "S", "D", "F", "G", "H", "J", "K", "L"]),
+	PackedStringArray(["Z", "X", "C", "V", "B", "N", "M"]),
+]
 
 @export var key_size := Vector2(48, 48):
 	set(v):
@@ -53,6 +61,9 @@ const KeyScene := preload("res://scenes/key.tscn")
 
 func _ready() -> void:
 	resized.connect(_rebuild)
+	if not Engine.is_editor_hint():
+		SettingsManager.layout_changed.connect(_on_layout_changed)
+		_update_from_settings()
 	_rebuild()
 
 
@@ -63,14 +74,26 @@ func _input(event: InputEvent) -> void:
 		var key_event := event as InputEventKey
 		if key_event.echo:
 			return
-		var ch := OS.get_keycode_string(key_event.keycode).to_upper()
-		var key_node := get_node_or_null("Key" + ch)
+		# physical_keycode is always QWERTY position — use it to find the key node
+		var physical := OS.get_keycode_string(key_event.physical_keycode).to_upper()
+		var key_node := get_node_or_null("Key" + physical)
 		if key_node:
 			if key_event.pressed:
 				key_node.press()
-				key_pressed.emit(ch)
+				key_pressed.emit(physical)
 			elif not key_event.pressed:
 				key_node.release()
+
+func _on_layout_changed(new_layout: String) -> void:
+	_update_from_settings()
+	layout_toggled.emit(new_layout)
+
+func _update_from_settings() -> void:
+	var new_rows := SettingsManager.get_layout_rows()
+	var typed_rows: Array[PackedStringArray] = []
+	for row in new_rows:
+		typed_rows.append(row as PackedStringArray)
+	rows = typed_rows
 
 
 func _rebuild() -> void:
@@ -89,12 +112,17 @@ func _rebuild() -> void:
 
 	for row_idx in rows.size():
 		var keys := rows[row_idx]
+		var physical_keys: PackedStringArray = _PHYSICAL_ROWS[row_idx] if row_idx < _PHYSICAL_ROWS.size() else PackedStringArray()
 		var offset := row_offsets[row_idx] if row_idx < row_offsets.size() else 0.0
 		var x := origin.x + offset
 
-		for key_label in keys:
+		for col_idx in keys.size():
+			var key_label: String = keys[col_idx]
+			# Name node by physical QWERTY position so physical_keycode can find it
+			var physical_name: String = physical_keys[col_idx] if col_idx < physical_keys.size() else key_label
+
 			var key_node := KeyScene.instantiate()
-			key_node.name = "Key" + key_label
+			key_node.name = "Key" + physical_name
 			key_node.label = key_label
 			key_node.add_to_group("keyboard_keys")
 			key_node.key_size = key_size
@@ -104,8 +132,6 @@ func _rebuild() -> void:
 			key_node.text_color = text_color
 			key_node.position = Vector2(x, row_y)
 			add_child(key_node)
-			# NOTE: intentionally NOT setting owner — these nodes are
-			# ephemeral and should never be serialized into .tscn files.
 
 			x += key_size.x + key_spacing
 

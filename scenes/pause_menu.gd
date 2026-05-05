@@ -102,7 +102,7 @@ func _refresh_from_manager() -> void:
 		return
 	var labels := _get_desc_labels()
 	var cost_labels := _get_cost_labels()
-	var upgrade_ids := UpgradeManager.get_all_ids()
+	var upgrade_ids: Variant = UpgradeManager.get_all_ids()
 	for i in upgrade_ids.size():
 		var upgrade_id: String = upgrade_ids[i]
 		if i < labels.size():
@@ -148,7 +148,7 @@ func _rebuild_cards() -> void:
 	for child in $HBoxContainer.get_children():
 		$HBoxContainer.remove_child(child)
 		child.free()
-	var upgrade_ids := UpgradeManager.get_all_ids()
+	var upgrade_ids: Variant = UpgradeManager.get_all_ids()
 	for i in upgrade_ids.size():
 		var upgrade_id: String = upgrade_ids[i]
 		var card := PanelContainer.new()
